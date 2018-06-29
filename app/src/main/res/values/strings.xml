@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Note App</string>
+    <string name="view_note">Notes</string>
+    <string name="quiz_button">Quiz Mode</string>
 </resources>
