@@ -19,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
     // called when user taps the notes button
     public void viewNotes(View view) {
         Intent intent = new Intent(this, ListNotesActivity.class);
+        /*
         EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra(EXTRA_MESSAGE, message); */
         startActivity(intent);
     }
 
