@@ -2,4 +2,8 @@
     <string name="app_name">Note App</string>
     <string name="view_note">Notes</string>
     <string name="quiz_button">Quiz Mode</string>
+    <string name="add_note">New Note</string>
+    <string name="enter_title">Title</string>
+    <string name="enter_body">Body</string>
+    <string name="save_note">Save</string>
 </resources>
