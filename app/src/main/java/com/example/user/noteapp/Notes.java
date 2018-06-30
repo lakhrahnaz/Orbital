@@ -1,3 +1,5 @@
+package com.example.user.noteapp;
+
 public class Notes {
 
     private String title;
@@ -12,10 +14,12 @@ public class Notes {
     }
 
     public String getTitle() {
+
         return title;
     }
 
     public String getBody() {
+
         return body;
     }
 }
