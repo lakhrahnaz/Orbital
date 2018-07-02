@@ -28,6 +28,7 @@ public class ListNotesActivity extends AppCompatActivity {
     private NoteAdaptor noteadapter; //spelled adapter properly this time, take note
     private RecyclerView notesListRecycler;
     public static final String EXTRA_MESSAGE = "com.example.user.noteapp.MESSAGE";
+    public static final String EXTRA_NAME = "com.example.user.noteapp.NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class ListNotesActivity extends AppCompatActivity {
             public void onClick(View view, final int position) {
                 Intent intent = new Intent (view.getContext(), NoteView.class);
                 intent.putExtra(EXTRA_MESSAGE, notesList.get(position).getBody());
+                intent.putExtra(EXTRA_NAME, notesList.get(position).getTitle());
                 startActivity(intent);
             }
         }));
