@@ -1,12 +1,16 @@
 package com.example.user.noteapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -16,11 +20,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class ListNotesActivity extends AppCompatActivity {
 
     private List<Notes> notesList = new ArrayList<> ();
     private NoteAdaptor noteadapter; //spelled adapter properly this time, take note
     private RecyclerView notesListRecycler;
+    public static final String EXTRA_MESSAGE = "com.example.user.noteapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,16 @@ public class ListNotesActivity extends AppCompatActivity {
         notesListRecycler.setLayoutManager(layoutManagement);
         notesListRecycler.setItemAnimator(new DefaultItemAnimator());
         notesListRecycler.setAdapter(noteadapter);
+        notesListRecycler.addOnItemTouchListener(new RecyclerTouchListener(this, notesListRecycler, new ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                Intent intent = new Intent (view.getContext(), NoteView.class);
+                //EditText notename = findViewById(R.id.Notes);
+                //String name = notename.getText().toString();
+                //intent.putExtra(EXTRA_MESSAGE, name);
+                startActivity(intent);
+            }
+        }));
 
         printNotes();
 
@@ -79,4 +96,40 @@ public class ListNotesActivity extends AppCompatActivity {
         }
         return body;
     }
+    public static interface ClickListener {
+        public void onClick(View view, int position);
+    }
+    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
+        private ClickListener clicklistener;
+        private GestureDetector gestureDetector;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener) {
+            this.clicklistener = clicklistener;
+            gestureDetector = new GestureDetector (context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+            });
+        }
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child!=null && clicklistener!=null && gestureDetector.onTouchEvent (e)) {
+                clicklistener.onClick(child, rv.getChildAdapterPosition(child));
+            }
+                return false;
+
+        }
+        @Override
+        public void onTouchEvent (RecyclerView rv, MotionEvent e){
+
+        }
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept){
+
+        }
+    }
+
 }
