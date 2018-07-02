@@ -43,9 +43,7 @@ public class ListNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, final int position) {
                 Intent intent = new Intent (view.getContext(), NoteView.class);
-                //EditText notename = findViewById(R.id.Notes);
-                //String name = notename.getText().toString();
-                //intent.putExtra(EXTRA_MESSAGE, name);
+                intent.putExtra(EXTRA_MESSAGE, notesList.get(position).getBody());
                 startActivity(intent);
             }
         }));
