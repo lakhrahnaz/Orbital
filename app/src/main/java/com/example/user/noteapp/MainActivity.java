@@ -26,5 +26,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewQuiz(View view) {
+        Intent intent = new Intent(this, QuizMenu.class);
+        startActivity(intent);
+    }
+
     // called when user taps the quiz button
 }
