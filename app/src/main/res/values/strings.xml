@@ -12,4 +12,6 @@
     <string name="test_body">Test Definitions</string>
     <string name="submit_answer">Check your Answer</string>
     <string name="quiz_answer">Enter Answer</string>
+    <string name="title_activity_quiz_body">QuizBody</string>
+    <string name="future_features">under construction</string>
 </resources>

@@ -54,6 +54,14 @@ public class ListNotesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
     public void addNotes(View view) {
         Intent intent = new Intent (this, NewNoteActivity.class);
         startActivity(intent);

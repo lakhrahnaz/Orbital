@@ -13,8 +13,13 @@ public class QuizMenu extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_menu);
     }
 
-    public void viewQuizMenu(View view) {
+    public void viewQuizTitle(View view) {
         Intent intent = new Intent(this, QuizTitle.class);
+        startActivity(intent);
+    }
+
+    public void viewQuizBody(View view) {
+        Intent intent = new Intent(this, QuizBody.class);
         startActivity(intent);
     }
 }

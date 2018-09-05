@@ -22,7 +22,8 @@
         <activity android:name=".QuizMenu" />
         <activity android:name=".QuizTitle" />
         <activity android:name=".QuizTime" />
-        <activity android:name=".QuizCompare"></activity>
+        <activity android:name=".QuizCompare" />
+        <activity android:name=".QuizBody"></activity>
     </application>
 
 </manifest>
