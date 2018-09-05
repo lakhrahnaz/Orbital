@@ -22,7 +22,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/Notes"
-        android:layout_width="368dp"
+        android:layout_width="328dp"
         android:layout_height="415dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
